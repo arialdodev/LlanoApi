@@ -99,30 +99,30 @@ namespace LlanoApp.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7954),
+                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4124),
                             TypeName = "Leyenda",
-                            UpdateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7933)
+                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4035)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7959),
+                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129),
                             TypeName = "Palabras",
-                            UpdateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7958)
+                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7961),
+                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4133),
                             TypeName = "Coplas",
-                            UpdateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7960)
+                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4132)
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7963),
+                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4135),
                             TypeName = "Refranes",
-                            UpdateDate = new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7962)
+                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4134)
                         });
                 });
 

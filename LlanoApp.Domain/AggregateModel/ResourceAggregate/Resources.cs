@@ -1,8 +1,9 @@
-﻿using LlanoApp.Domain.SeedWork;
+﻿using LlanoApp.Domain.AggregateModel.Events;
+using LlanoApp.Domain.SeedWork;
 
 namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
 {
-    public class Resources : Entity, IResourcesAggregate
+    public class Resources : Entity, IAggregateRoot
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
@@ -21,6 +22,11 @@ namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
 
         public int ResourceStatesId { get; private set; }
         public ResourceStates ResourceStates { get; private set; } = null!;
+
+        public void GetAllResourceTypes()
+        {
+            this.AddDomainEvent(new ListResourceTypesDomainEvent());
+        }
 
     }
 }

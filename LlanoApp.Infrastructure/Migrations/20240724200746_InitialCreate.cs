@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace LlanoApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -101,10 +101,10 @@ namespace LlanoApp.Infrastructure.Migrations
                 columns: new[] { "Id", "CreateDate", "TypeName", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7954), "Leyenda", new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7933) },
-                    { 2, new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7959), "Palabras", new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7958) },
-                    { 3, new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7961), "Coplas", new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7960) },
-                    { 4, new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7963), "Refranes", new DateTime(2024, 7, 22, 9, 5, 3, 424, DateTimeKind.Local).AddTicks(7962) }
+                    { 1, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4124), "Leyenda", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4035) },
+                    { 2, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129), "Palabras", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129) },
+                    { 3, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4133), "Coplas", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4132) },
+                    { 4, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4135), "Refranes", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4134) }
                 });
 
             migrationBuilder.CreateIndex(
