@@ -1,0 +1,6 @@
+@LlanoApp.Api_HostAddress = http://localhost:5193
+
+GET {{LlanoApp.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
