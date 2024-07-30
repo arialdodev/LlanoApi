@@ -11,6 +11,6 @@ namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
             TypeName = typeName;
         }
             
-        public ICollection<Resources> Resources { get; private set; } = [];
+        public ICollection<Resource> Resources { get; private set; } = [];
     }
 }

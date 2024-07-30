@@ -2,8 +2,6 @@ using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using LlanoApp.Domain.SeedWork;
 using LlanoApp.Infrastructure;
 using LlanoApp.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +19,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddScoped<IRepository<ResourceTypes>, ResourceTypesRepository>();
+builder.Services.AddScoped<IRepository<Resource>, ResourceRepository>();
+
 
 var app = builder.Build();
 

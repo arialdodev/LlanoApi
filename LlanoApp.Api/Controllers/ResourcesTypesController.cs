@@ -20,7 +20,7 @@ namespace LlanoApp.Api.Controllers
         [HttpGet]
         public async Task<List<ResourceTypes>> GetAllAsync()
         {
-            var commandResult = await _mediator.Send(new GetAllListResourceTypesQueries());
+            var commandResult = await _mediator.Send(new GetAllListResourceTypesQuery());
             return commandResult;
         }
 

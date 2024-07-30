@@ -4,6 +4,7 @@ using LlanoApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LlanoApp.Infrastructure.Migrations
 {
     [DbContext(typeof(LlanoAppDbContext))]
-    partial class LlanoAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240730155929_ResourceStates-ResourceTypes")]
+    partial class ResourceStatesResourceTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
