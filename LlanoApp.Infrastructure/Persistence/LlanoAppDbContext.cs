@@ -15,15 +15,15 @@ namespace LlanoApp.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ResourceTypes>().HasData(
-                new ResourceTypes("Legend") { Id = 1},
-                new ResourceTypes("word") { Id = 2},
-                new ResourceTypes("couplet") { Id = 3},
-                new ResourceTypes("proverb") { Id = 4}
+                new ResourceTypes("Leyenda") { Id = 1},
+                new ResourceTypes("Palabra") { Id = 2},
+                new ResourceTypes("Copla") { Id = 3},
+                new ResourceTypes("Refran") { Id = 4}
             );
             modelBuilder.Entity<ResourceStates>().HasData(
-                new ResourceStates("requested") { Id = 1 },
-                new ResourceStates("rejected") { Id = 2 },
-                new ResourceStates("approved") { Id = 3 }
+                new ResourceStates("Solicitado") { Id = 1 },
+                new ResourceStates("Descartado") { Id = 2 },
+                new ResourceStates("Aprovado") { Id = 3 }
             );
         }
     }

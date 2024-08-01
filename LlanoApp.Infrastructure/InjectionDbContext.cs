@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace LlanoApp.Infrastructure
 {
-    public static class DependencyInjection
+    public static class InjectionDbContext
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {

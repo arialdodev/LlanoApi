@@ -1,12 +1,14 @@
 ﻿using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using LlanoApp.Domain.SeedWork;
 using LlanoApp.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace LlanoApp.Infrastructure.Repositories
 {
     public class ResourceRepository : IRepository<Resource>
     {
         private readonly LlanoAppDbContext _llanoAppDbContext;
+
         public ResourceRepository(LlanoAppDbContext llanoAppDbContext)
         {
             _llanoAppDbContext = llanoAppDbContext;
@@ -14,16 +16,15 @@ namespace LlanoApp.Infrastructure.Repositories
 
         public async Task<bool> Create(Resource resource)
         {
-           await _llanoAppDbContext.Resource.AddAsync(resource);
-           await _llanoAppDbContext.SaveChangesAsync();
-            return true;
+            await _llanoAppDbContext.Resource.AddAsync(resource);
+            await _llanoAppDbContext.SaveChangesAsync();
+            return true;            
         }
-
 
         public Task<List<Resource>> GetAll()
         {
-            throw new NotImplementedException();
+            var listResources = _llanoAppDbContext.Resource.ToListAsync();
+            return listResources;
         }
-
     }
 }

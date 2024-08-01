@@ -4,7 +4,6 @@ namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
 {
     public class Resource : Entity, IAggregateRoot
     {
-
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string Image { get; private set; }

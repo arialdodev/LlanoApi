@@ -1,5 +1,4 @@
-﻿
-using LlanoApp.Domain.SeedWork;
+﻿using LlanoApp.Domain.SeedWork;
 
 namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
 {

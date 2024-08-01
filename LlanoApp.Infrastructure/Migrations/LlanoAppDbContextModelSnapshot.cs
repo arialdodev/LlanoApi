@@ -117,23 +117,23 @@ namespace LlanoApp.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 840, DateTimeKind.Local).AddTicks(129),
-                            State = "requested",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 840, DateTimeKind.Local).AddTicks(128)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7368),
+                            State = "Solicitado",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7367)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 840, DateTimeKind.Local).AddTicks(131),
-                            State = "rejected",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 840, DateTimeKind.Local).AddTicks(131)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7371),
+                            State = "Descartado",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7371)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 840, DateTimeKind.Local).AddTicks(134),
-                            State = "approved",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 840, DateTimeKind.Local).AddTicks(133)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7373),
+                            State = "Aprovado",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7372)
                         });
                 });
 
@@ -163,30 +163,30 @@ namespace LlanoApp.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9831),
-                            TypeName = "Legend",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9806)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7003),
+                            TypeName = "Leyenda",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(6981)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9835),
-                            TypeName = "word",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9834)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7008),
+                            TypeName = "Palabra",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7007)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9838),
-                            TypeName = "couplet",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9837)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7010),
+                            TypeName = "Copla",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7009)
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9840),
-                            TypeName = "proverb",
-                            UpdateDate = new DateTime(2024, 7, 30, 10, 59, 28, 839, DateTimeKind.Local).AddTicks(9840)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7011),
+                            TypeName = "Refran",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7011)
                         });
                 });
 

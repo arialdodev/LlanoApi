@@ -1,9 +1,10 @@
-﻿using LlanoApp.Api.Commands;
+﻿using Azure.Core;
+using LlanoApp.Api.Commands;
 using LlanoApp.Api.Dto;
+using LlanoApp.Api.Queries;
+using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LlanoApp.Api.Controllers
 {
@@ -20,16 +21,16 @@ namespace LlanoApp.Api.Controllers
         [HttpPost]
         public async Task<bool> Create([FromBody] CreateResourceDto createResourceDto) 
         {
-            try
-            {
-                var command = new CreateResourceCommand(createResourceDto);
-                var result = await _mediator.Send(command);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+          var command = new CreateResourceCommand(createResourceDto);
+          var result = await _mediator.Send(command);
+          return result;  
+        }
+
+        [HttpGet]
+        public Task<List<Resource>> GetAll()
+        {
+               var listResources =  _mediator.Send(new GetAllListResourcesQuery());
+            return listResources;
         }
     }
 }
