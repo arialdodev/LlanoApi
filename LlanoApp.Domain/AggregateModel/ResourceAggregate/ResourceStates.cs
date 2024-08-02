@@ -1,5 +1,4 @@
-﻿
-using LlanoApp.Domain.SeedWork;
+﻿using LlanoApp.Domain.SeedWork;
 
 namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
 {
@@ -12,6 +11,6 @@ namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
             State = state;
         }
 
-        public ICollection<Resources> Resources { get; private set; } = [];
+        public ICollection<Resource> Resources { get; private set; } = [];
     }
 }

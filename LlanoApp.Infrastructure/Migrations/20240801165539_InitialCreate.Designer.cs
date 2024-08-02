@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LlanoApp.Infrastructure.Migrations
 {
     [DbContext(typeof(LlanoAppDbContext))]
-    [Migration("20240724200746_InitialCreate")]
+    [Migration("20240801165539_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -53,6 +53,47 @@ namespace LlanoApp.Infrastructure.Migrations
                     b.ToTable("MessageHistories");
                 });
 
+            modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ResourceStatesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResourceTypesId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResourceStatesId");
+
+                    b.HasIndex("ResourceTypesId");
+
+                    b.ToTable("Resource");
+                });
+
             modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.ResourceStates", b =>
                 {
                     b.Property<int>("Id")
@@ -74,6 +115,29 @@ namespace LlanoApp.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ResourceStates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7368),
+                            State = "Solicitado",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7367)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7371),
+                            State = "Descartado",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7371)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7373),
+                            State = "Aprovado",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7372)
+                        });
                 });
 
             modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.ResourceTypes", b =>
@@ -102,76 +166,36 @@ namespace LlanoApp.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4124),
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7003),
                             TypeName = "Leyenda",
-                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4035)
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(6981)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129),
-                            TypeName = "Palabras",
-                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7008),
+                            TypeName = "Palabra",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7007)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4133),
-                            TypeName = "Coplas",
-                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4132)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7010),
+                            TypeName = "Copla",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7009)
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4135),
-                            TypeName = "Refranes",
-                            UpdateDate = new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4134)
+                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7011),
+                            TypeName = "Refran",
+                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7011)
                         });
-                });
-
-            modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resources", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ResourceStatesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ResourceTypesId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ResourceStatesId");
-
-                    b.HasIndex("ResourceTypesId");
-
-                    b.ToTable("Resources");
                 });
 
             modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.MessageHistory", b =>
                 {
-                    b.HasOne("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resources", "Resources")
+                    b.HasOne("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resource", "Resources")
                         .WithMany("MessageHistory")
                         .HasForeignKey("ResourcesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -180,7 +204,7 @@ namespace LlanoApp.Infrastructure.Migrations
                     b.Navigation("Resources");
                 });
 
-            modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resources", b =>
+            modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resource", b =>
                 {
                     b.HasOne("LlanoApp.Domain.AggregateModel.ResourceAggregate.ResourceStates", "ResourceStates")
                         .WithMany("Resources")
@@ -199,6 +223,11 @@ namespace LlanoApp.Infrastructure.Migrations
                     b.Navigation("ResourceTypes");
                 });
 
+            modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resource", b =>
+                {
+                    b.Navigation("MessageHistory");
+                });
+
             modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.ResourceStates", b =>
                 {
                     b.Navigation("Resources");
@@ -207,11 +236,6 @@ namespace LlanoApp.Infrastructure.Migrations
             modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.ResourceTypes", b =>
                 {
                     b.Navigation("Resources");
-                });
-
-            modelBuilder.Entity("LlanoApp.Domain.AggregateModel.ResourceAggregate.Resources", b =>
-                {
-                    b.Navigation("MessageHistory");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,8 +9,7 @@ namespace LlanoApp.Infrastructure.Repositories
     {
         private readonly LlanoAppDbContext _llanoAppDbContext = llanoAppDbContext;
 
-
-        public void Add(ResourceTypes entity)
+        public Task<bool> Create(ResourceTypes resourceTypes)
         {
             throw new NotImplementedException();
         }
