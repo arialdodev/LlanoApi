@@ -1,9 +1,9 @@
-﻿using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+﻿using LlanoApp.Api.Dto;
 using MediatR;
 
-namespace LlanoApp.Api.Commands
+namespace LlanoApp.Api.Queries
 {
-    public class GetAllListResourceTypesQuery : IRequest<List<ResourceTypes>>
+    public class GetAllListResourceTypesQuery : IRequest<List<ResourceTypesDto>>
     {
     }
 }

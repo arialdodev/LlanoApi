@@ -1,10 +1,11 @@
-﻿using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+﻿using LlanoApp.Api.Dto;
+using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using LlanoApp.Domain.SeedWork;
 using MediatR;
 
-namespace LlanoApp.Api.Commands
+namespace LlanoApp.Api.Queries
 {
-    public class GetAllListResourceTypesQueryHandler : IRequestHandler<GetAllListResourceTypesQuery, List<ResourceTypes>>
+    public class GetAllListResourceTypesQueryHandler : IRequestHandler<GetAllListResourceTypesQuery, List<ResourceTypesDto>>
     {
         private readonly IRepository<ResourceTypes> _repository;
         public GetAllListResourceTypesQueryHandler(IRepository<ResourceTypes> repository)
@@ -12,10 +13,17 @@ namespace LlanoApp.Api.Commands
             _repository = repository;
         }
 
-        public Task<List<ResourceTypes>> Handle(GetAllListResourceTypesQuery request, CancellationToken cancellationToken)
+        public async Task<List<ResourceTypesDto>> Handle(GetAllListResourceTypesQuery request, CancellationToken cancellationToken)
         {
-            var listResourceTypes = _repository.GetAll();
-            return listResourceTypes;
+            var resourceTypes = await _repository.GetAll();
+            var resourceTypesDto = new List<ResourceTypesDto>();
+
+            foreach (var entidad in resourceTypes)
+            {
+                var temp = new ResourceTypesDto(entidad.Id, entidad.TypeName);
+                resourceTypesDto.Add(temp); 
+            }
+            return resourceTypesDto;
         }
     }
 }

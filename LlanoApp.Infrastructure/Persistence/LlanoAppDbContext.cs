@@ -23,7 +23,7 @@ namespace LlanoApp.Infrastructure.Persistence
             modelBuilder.Entity<ResourceStates>().HasData(
                 new ResourceStates("Solicitado") { Id = 1 },
                 new ResourceStates("Descartado") { Id = 2 },
-                new ResourceStates("Aprovado") { Id = 3 }
+                new ResourceStates("Aprobado") { Id = 3 }
             );
         }
     }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LlanoApp.Infrastructure.Migrations
 {
     [DbContext(typeof(LlanoAppDbContext))]
-    [Migration("20240801165539_InitialCreate")]
+    [Migration("20240814134723_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -105,7 +105,7 @@ namespace LlanoApp.Infrastructure.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("State")
+                    b.Property<string>("NameState")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -120,23 +120,23 @@ namespace LlanoApp.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7368),
-                            State = "Solicitado",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7367)
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5384),
+                            NameState = "Solicitado",
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5384)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7371),
-                            State = "Descartado",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7371)
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5386),
+                            NameState = "Descartado",
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5386)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7373),
-                            State = "Aprovado",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7372)
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5387),
+                            NameState = "Aprobado",
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5387)
                         });
                 });
 
@@ -166,30 +166,30 @@ namespace LlanoApp.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7003),
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5277),
                             TypeName = "Leyenda",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(6981)
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5263)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7008),
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5280),
                             TypeName = "Palabra",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7007)
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5279)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7010),
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5281),
                             TypeName = "Copla",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7009)
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5281)
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7011),
+                            CreateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5282),
                             TypeName = "Refran",
-                            UpdateDate = new DateTime(2024, 8, 1, 11, 55, 38, 688, DateTimeKind.Local).AddTicks(7011)
+                            UpdateDate = new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5282)
                         });
                 });
 

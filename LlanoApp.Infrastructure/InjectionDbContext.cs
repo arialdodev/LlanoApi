@@ -12,7 +12,6 @@ namespace LlanoApp.Infrastructure
             services.AddDbContext<LlanoAppDbContext>(options =>
                 options.UseSqlServer(
                     configuration.GetConnectionString("DbConnection")));
-
         
             return services;
         }

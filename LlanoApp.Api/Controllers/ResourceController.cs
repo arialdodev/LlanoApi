@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using LlanoApp.Api.Commands;
+﻿using LlanoApp.Api.Commands;
 using LlanoApp.Api.Dto;
 using LlanoApp.Api.Queries;
 using LlanoApp.Domain.AggregateModel.ResourceAggregate;
@@ -19,17 +18,28 @@ namespace LlanoApp.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<bool> Create([FromBody] CreateResourceDto createResourceDto) 
+        public async Task<IActionResult> Create([FromBody] ResourceCreateDto createResourceDto)
         {
-          var command = new CreateResourceCommand(createResourceDto);
-          var result = await _mediator.Send(command);
-          return result;  
+            try
+            {
+                var command = new CreateResourceCommand(createResourceDto);
+                var result = await _mediator.Send(command);
+                return StatusCode(200, result);
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode(400, new { Message = ex.Message });
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
         }
 
         [HttpGet]
         public Task<List<Resource>> GetAll()
         {
-               var listResources =  _mediator.Send(new GetAllListResourcesQuery());
+            var listResources = _mediator.Send(new GetAllListResourcesQuery());
             return listResources;
         }
     }

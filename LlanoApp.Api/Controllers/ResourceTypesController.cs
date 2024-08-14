@@ -1,5 +1,5 @@
-﻿using LlanoApp.Api.Commands;
-using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+﻿using LlanoApp.Api.Dto;
+using LlanoApp.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,11 +17,12 @@ namespace LlanoApp.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<ResourceTypes>> GetAllAsync()
+        public async Task<List<ResourceTypesDto>> GetAll()
         {
-            var commandResult = await _mediator.Send(new GetAllListResourceTypesQuery());
-            return commandResult;
-        }
+            var query = new GetAllListResourceTypesQuery();
+            var result = await _mediator.Send(query);
+            return result;
 
+        }
     }
 }
