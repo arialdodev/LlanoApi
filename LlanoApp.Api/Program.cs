@@ -1,3 +1,4 @@
+using LlanoApp.Api.Dto;
 using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using LlanoApp.Domain.SeedWork;
 using LlanoApp.Infrastructure;
@@ -21,6 +22,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 # region inyeccion de dependencia
 builder.Services.AddScoped<IRepository<ResourceTypes>, ResourceTypesRepository>();
+builder.Services.AddScoped<IRepository<ResourceStates>, ResourceStatesRepository>();
 builder.Services.AddScoped<IRepository<Resource>, ResourceRepository>();
 # endregion
 
