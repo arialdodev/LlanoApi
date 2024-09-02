@@ -2,11 +2,6 @@
 using LlanoApp.Domain.SeedWork;
 using LlanoApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LlanoApp.Infrastructure.Repositories
 {
@@ -19,8 +14,8 @@ namespace LlanoApp.Infrastructure.Repositories
         }
         public Task<List<ResourceStates>> GetAll()
         {
-            var listResourceStates = _llanoAppDbContext.ResourceStates.ToListAsync();
-            return listResourceStates;
+            var resourceStatesList = _llanoAppDbContext.ResourceStates.ToListAsync();
+            return resourceStatesList;
         }
     }
 }

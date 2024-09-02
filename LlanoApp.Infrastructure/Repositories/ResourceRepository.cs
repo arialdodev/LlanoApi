@@ -23,8 +23,8 @@ namespace LlanoApp.Infrastructure.Repositories
 
         public Task<List<Resource>> GetAll()
         {
-            var listResources = _llanoAppDbContext.Resource.ToListAsync();
-            return listResources;
+            var resourcesList = _llanoAppDbContext.Resource.ToListAsync();
+            return resourcesList;
         }
     }
 }

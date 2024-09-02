@@ -22,7 +22,7 @@ namespace LlanoApp.Api.Controllers
         {
             try
             {
-                var command = new CreateResourceCommand(createResourceDto);
+                var command = new ResourceCreateCommand(createResourceDto);
                 var result = await _mediator.Send(command);
                 return StatusCode(200, result);
             }
@@ -39,7 +39,7 @@ namespace LlanoApp.Api.Controllers
         [HttpGet]
         public Task<List<Resource>> GetAll()
         {
-            var listResources = _mediator.Send(new GetAllListResourcesQuery());
+            var listResources = _mediator.Send(new ResourcesGetAllListQuery());
             return listResources;
         }
     }

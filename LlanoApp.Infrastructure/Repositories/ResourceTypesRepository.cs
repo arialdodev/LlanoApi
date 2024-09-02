@@ -16,8 +16,8 @@ namespace LlanoApp.Infrastructure.Repositories
 
         public Task<List<ResourceTypes>> GetAll()
         {
-            var listResourceTypes = _llanoAppDbContext.ResourceTypes.ToListAsync();
-            return listResourceTypes;
+            var resourceTypesList = _llanoAppDbContext.ResourceTypes.ToListAsync();
+            return resourceTypesList;
         }
     }
 }

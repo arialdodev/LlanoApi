@@ -5,15 +5,15 @@ using MediatR;
 
 namespace LlanoApp.Api.Queries
 {
-    public class GetAllListResourceTypesQueryHandler : IRequestHandler<GetAllListResourceTypesQuery, List<ResourceTypesDto>>
+    public class ResourceTypesGetAllListQueryHandler : IRequestHandler<ResourceTypesGetAllListQuery, List<ResourceTypesDto>>
     {
         private readonly IRepository<ResourceTypes> _repository;
-        public GetAllListResourceTypesQueryHandler(IRepository<ResourceTypes> repository)
+        public ResourceTypesGetAllListQueryHandler(IRepository<ResourceTypes> repository)
         {
             _repository = repository;
         }
 
-        public async Task<List<ResourceTypesDto>> Handle(GetAllListResourceTypesQuery request, CancellationToken cancellationToken)
+        public async Task<List<ResourceTypesDto>> Handle(ResourceTypesGetAllListQuery request, CancellationToken cancellationToken)
         {
             var resourceTypes = await _repository.GetAll();
             var resourceTypesDto = new List<ResourceTypesDto>();

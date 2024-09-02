@@ -1,6 +1,4 @@
-﻿using LlanoApp.Api.Dto;
-using LlanoApp.Api.Queries;
-using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+﻿using LlanoApp.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +18,7 @@ namespace LlanoApp.Api.Controllers
         {
             try
             {
-                var listResourceStatesQuery = new GetAllListResourceStatesQuery();
+                var listResourceStatesQuery = new ResourceStatesGetAllListQuery();
                 var commandResult = await _mediator.Send(listResourceStatesQuery);
                 return StatusCode(200, commandResult);
             }
