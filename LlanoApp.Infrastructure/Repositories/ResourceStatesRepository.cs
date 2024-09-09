@@ -17,5 +17,15 @@ namespace LlanoApp.Infrastructure.Repositories
             var resourceStatesList = _llanoAppDbContext.ResourceStates.ToListAsync();
             return resourceStatesList;
         }
+
+        public Task<ResourceStates?> GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ResourceStates entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

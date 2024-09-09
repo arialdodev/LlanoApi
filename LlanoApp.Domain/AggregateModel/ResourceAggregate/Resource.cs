@@ -17,6 +17,12 @@ namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
             Image = image;
         }
 
+        public void Update(string description, string name)
+        {
+            Description = description;
+            Name = name;
+        }
+
         public ICollection<MessageHistory> MessageHistory { get; private set; } = [];
 
         public int ResourceTypesId { get; private set; }

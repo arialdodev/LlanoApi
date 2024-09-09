@@ -26,5 +26,16 @@ namespace LlanoApp.Infrastructure.Repositories
             var resourcesList = _llanoAppDbContext.Resource.ToListAsync();
             return resourcesList;
         }
+
+        public Task<Resource?> GetById(int id)
+        {
+            return _llanoAppDbContext.Set<Resource>().FirstOrDefaultAsync(r => r.Id == id);
+        }
+
+        public void Update(Resource resource)
+        {
+            _llanoAppDbContext.Resource.Update(resource);
+            _llanoAppDbContext.SaveChanges();
+        }
     }
 }

@@ -36,8 +36,29 @@ namespace LlanoApp.Api.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] ResourceUpdateDto resourceUpdateDto)
+        {
+            try
+            {
+                var entity = new ResourceUpdateCommand(resourceUpdateDto);
+                var result = await _mediator.Send(entity);
+
+                return StatusCode(200, result);
+            }
+            catch (ArgumentException ex) 
+            {
+                return StatusCode(400, new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+            
+        }
+
         [HttpGet]
-        public Task<List<Resource>> GetAll()
+        public Task<List<Resource>> GetAllByResourceType()
         {
             var listResources = _mediator.Send(new ResourcesGetAllListQuery());
             return listResources;

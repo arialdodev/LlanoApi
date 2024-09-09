@@ -19,5 +19,15 @@ namespace LlanoApp.Infrastructure.Repositories
             var resourceTypesList = _llanoAppDbContext.ResourceTypes.ToListAsync();
             return resourceTypesList;
         }
+
+        public Task<ResourceTypes?> GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ResourceTypes entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
