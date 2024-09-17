@@ -1,7 +1,7 @@
 ﻿using LlanoApp.Api.Commands;
 using LlanoApp.Api.Dto;
 using LlanoApp.Api.Queries;
-using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+using LlanoApp.Domain.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +12,7 @@ namespace LlanoApp.Api.Controllers
     public class ResourceController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ResourceController(IMediator mediator )
+        public ResourceController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -20,48 +20,41 @@ namespace LlanoApp.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ResourceCreateDto createResourceDto)
         {
-            try
+            var command = new ResourceCreateCommand(createResourceDto);
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess)
             {
-                var command = new ResourceCreateCommand(createResourceDto);
-                var result = await _mediator.Send(command);
-                return StatusCode(200, result);
+                switch (result.ErrorType)
+                {
+                    case ErrorType.Validation:
+                        return StatusCode(400, result);
+
+                    default:
+                        return StatusCode(500, result);
+                }
             }
-            catch (ArgumentException ex)
-            {
-                return StatusCode(400, new { Message = ex.Message });
-            }
-            catch(Exception ex)
-            {
-                return StatusCode(500, new { Message = ex.Message });
-            }
+            return StatusCode(200, result);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] ResourceUpdateDto resourceUpdateDto)
         {
-            try
-            {
-                var entity = new ResourceUpdateCommand(resourceUpdateDto);
-                var result = await _mediator.Send(entity);
-
-                return StatusCode(200, result);
-            }
-            catch (ArgumentException ex) 
-            {
-                return StatusCode(400, new { Message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = ex.Message });
-            }
-            
+            var entity = new ResourceUpdateCommand(resourceUpdateDto);
+            var result = await _mediator.Send(entity);
+            return StatusCode(200, result);
         }
 
         [HttpGet]
-        public Task<List<Resource>> GetAllByResourceType()
+        public async Task<IActionResult> GetAllByResourceTypeId(int? resourceTypeId)
         {
-            var listResources = _mediator.Send(new ResourcesGetAllListQuery());
-            return listResources;
+            var query = new ResourcesGetAllListQuery(resourceTypeId);
+            var listResources = await _mediator.Send(query);
+            if (listResources.IsSuccess)
+            {
+                return Ok(listResources.Value);
+            }
+            return BadRequest(listResources.Error);
         }
     }
 }

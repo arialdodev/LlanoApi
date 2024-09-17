@@ -6,9 +6,9 @@ namespace LlanoApp.Api.Commands
 {
     public class ResourceUpdateCommandHandler : IRequestHandler<ResourceUpdateCommand, bool>
     {
-        private readonly IRepository<Resource> _repository;
+        private readonly IRepositoryResource<Resource> _repository;
 
-        public ResourceUpdateCommandHandler(IRepository<Resource> repository)
+        public ResourceUpdateCommandHandler(IRepositoryResource<Resource> repository)
         {
             _repository = repository;
         }

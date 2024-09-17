@@ -1,51 +1,80 @@
 ﻿using LlanoApp.Api.Dto;
+using LlanoApp.Domain.Common;
 using MediatR;
 using System.Text.RegularExpressions;
 
 namespace LlanoApp.Api.Commands
 {
-    public class ResourceCreateCommand : IRequest<bool>
+    public class ResourceCreateCommand : IRequest<Result<bool>>
     {
         public ResourceCreateDto ResourceCreateDto { get; private set; }
 
         public ResourceCreateCommand(ResourceCreateDto resourceCreateDto)
         {
             ResourceCreateDto = resourceCreateDto;
+        }
 
+        public Result<bool> Validate()
+        {
             #region Validaciones Name
-            if (string.IsNullOrWhiteSpace(resourceCreateDto.Name))
-                throw new ArgumentException("el nombre es requerido", nameof(resourceCreateDto.Name));
+            if (string.IsNullOrWhiteSpace(ResourceCreateDto.Name))
+            {
+               return Result<bool>.Failure(
+                    error: "el nombre es requerido" + nameof(ResourceCreateDto.Name),
+                    errorType: ErrorType.Validation
+                );
+            }
 
-            ResourceCreateDto.SetName(ResourceCreateDto.Name.Trim());
+            if (ResourceCreateDto.Name.Length < 7)
+            {
+                return Result<bool>.Failure(
+                    error: "Name deberia tener mas de 7 caracteres" + nameof(ResourceCreateDto.Name),
+                    errorType: ErrorType.Validation
+                    );
+            }
 
-            if (resourceCreateDto.Name.Length < 7)
-                throw new ArgumentException("Name deberia tener mas de 7 caracteres", nameof(resourceCreateDto.Name));
+            if (ResourceCreateDto.ResourceTypesId == 1 && string.IsNullOrWhiteSpace(ResourceCreateDto.Image))
+            {
+                return Result<bool>.Failure(
+                    error: "imagen es requerida" + nameof(ResourceCreateDto.Image),
+                    errorType: ErrorType.Validation);
 
-            if (resourceCreateDto.ResourceTypesId == 1 && string.IsNullOrWhiteSpace(resourceCreateDto.Image))
-                throw new ArgumentException("imagen es requerida", nameof(resourceCreateDto.Image));
+            }
 
-            ResourceCreateDto.SetImage(ResourceCreateDto.Image.Trim());
-
-            if (!Regex.IsMatch(resourceCreateDto.Name, @"^\D+$"))
-                throw new ArgumentException("los numeros no son permitidos en el nombre", nameof(resourceCreateDto.Name));
+            if (!Regex.IsMatch(ResourceCreateDto.Name, @"^\D+$"))
+            {
+                return Result<bool>.Failure(error: "los numeros no son permitidos en el nombre" + nameof(ResourceCreateDto.Name),
+                    errorType: ErrorType.Validation);
+            }
             #endregion
 
             #region Validaciones Description
-            if (string.IsNullOrWhiteSpace(resourceCreateDto.Description))
-                throw new ArgumentException("La Descripcion es requerida", nameof(resourceCreateDto.Description));
+            if (string.IsNullOrWhiteSpace(ResourceCreateDto.Description))
+            {
+                return Result<bool>.Failure(error: "La Descripcion es requerida" + nameof(ResourceCreateDto.Description),
+                    errorType: ErrorType.Validation);
+            }
 
-            ResourceCreateDto.SetDescription(ResourceCreateDto.Description.Trim());
+            if (ResourceCreateDto.ResourceTypesId == 1 && ResourceCreateDto.Description.Length < 600)
+            {
+                return Result<bool>.Failure(error: "La descripcion debe tener mas de 600 caracteres" + nameof(ResourceCreateDto.Description),
+                    errorType: ErrorType.Validation);
+            }
 
-            if (resourceCreateDto.ResourceTypesId == 1 && resourceCreateDto.Description.Length < 600)
-                throw new ArgumentException("La descripcion debe tener mas de 600 caracteres", nameof(resourceCreateDto.Description));
-
-            if (!Regex.IsMatch(resourceCreateDto.Description, @"^\D+$")) 
-                throw new ArgumentException("no se pueden poner numeros en la descripcion", nameof(resourceCreateDto.Description));
+            if (!Regex.IsMatch(ResourceCreateDto.Description, @"^\D+$"))
+            {
+                return Result<bool>.Failure(error: "no se pueden poner numeros en la descripcion" + nameof(ResourceCreateDto.Description),
+                    errorType: ErrorType.Validation);
+            }
             #endregion
 
-            if (!Regex.IsMatch(string.Join(",",resourceCreateDto.ResourceTypesId), @"^([1-4](,[1-4])*)?$"))
-                throw new ArgumentException("Tiene que ser menor a 4", nameof(resourceCreateDto.ResourceTypesId));
-     
+            if (!Regex.IsMatch(string.Join(",",ResourceCreateDto.ResourceTypesId), @"^([1-4](,[1-4])*)?$"))
+            {
+                return Result<bool>.Failure(error: "Tiene que ser menor a 4" + nameof(ResourceCreateDto.ResourceTypesId),
+                    errorType: ErrorType.Validation);
+            }
+
+            return Result<bool>.Success(true);
         }
     }
 }

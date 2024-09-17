@@ -23,7 +23,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 # region inyeccion de dependencia
 builder.Services.AddScoped<IRepository<ResourceTypes>, ResourceTypesRepository>();
 builder.Services.AddScoped<IRepository<ResourceStates>, ResourceStatesRepository>();
-builder.Services.AddScoped<IRepository<Resource>, ResourceRepository>();
+builder.Services.AddScoped<IRepositoryResource<Resource>, ResourceRepository>();
 # endregion
 
 var app = builder.Build();
