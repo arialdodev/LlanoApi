@@ -3,7 +3,7 @@ using MediatR;
 
 namespace LlanoApp.Api.Queries
 {
-    public class GetAllListResourceStatesQuery : IRequest<List<ResourceStatesDto>>
+    public class ResourceStatesGetAllListQuery : IRequest<List<ResourceStatesDto>>
     {
     }
 }

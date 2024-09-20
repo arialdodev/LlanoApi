@@ -5,5 +5,9 @@ namespace LlanoApp.Domain.SeedWork
     {
         Task<bool> Create(T entity);
         Task<List<T>> GetAll();
+
+        // Actualizar
+        Task<T?> GetById(int id);
+        void Update(T entity);
     }
 }

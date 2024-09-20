@@ -3,15 +3,15 @@
     public class ResourceStatesDto
     {
         public int Id { get; private set; }
-        public String State { get; private set; }
+        public string NameState { get; private set; }
 
         public ResourceStatesDto(
             int id,
-            String state
+            string nameState
         )
         {
             Id = id;
-            State = state;
+            NameState = nameState;
         }
     }
 }

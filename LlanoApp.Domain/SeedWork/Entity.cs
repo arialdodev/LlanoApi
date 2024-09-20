@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace LlanoApp.Domain.SeedWork
+﻿namespace LlanoApp.Domain.SeedWork
 {
     public abstract class Entity
     {
