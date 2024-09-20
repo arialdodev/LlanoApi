@@ -1,14 +1,29 @@
 ﻿using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+using LlanoApp.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace LlanoApp.Infrastructure.Persistence
 {
-    public class LlanoAppDbContext(DbContextOptions<LlanoAppDbContext> options) : DbContext(options)
+    public class LlanoAppDbContext : DbContext
     {
+        private readonly string _connectionString;
+
+        public LlanoAppDbContext(IOptions<DatabaseOptions> options, DbContextOptions<LlanoAppDbContext> dbContextOptions)
+        : base(dbContextOptions)
+        {
+            _connectionString = options.Value.DbConnection;
+        }
+
         public DbSet<ResourceTypes> ResourceTypes => Set<ResourceTypes>();
         public DbSet<Resource> Resource => Set<Resource>();
         public DbSet<ResourceStates> ResourceStates => Set<ResourceStates>();
         public DbSet<MessageHistory> MessageHistories => Set<MessageHistory>();
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_connectionString);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
