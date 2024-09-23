@@ -1,4 +1,5 @@
 ﻿using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+using LlanoApp.Domain.Enums;
 using LlanoApp.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -30,15 +31,15 @@ namespace LlanoApp.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ResourceTypes>().HasData(
-                new ResourceTypes("Leyenda") { Id = 1},
-                new ResourceTypes("Palabra") { Id = 2},
-                new ResourceTypes("Copla") { Id = 3},
-                new ResourceTypes("Refran") { Id = 4}
+                new ResourceTypes("Leyenda") { Id = (int)ResourceTypesEnum.Leyenda},
+                new ResourceTypes("Palabra") { Id = (int)ResourceTypesEnum.Palabra},
+                new ResourceTypes("Copla") { Id = (int)ResourceTypesEnum.Copla},
+                new ResourceTypes("Refran") { Id = (int)ResourceTypesEnum.Refran}
             );
             modelBuilder.Entity<ResourceStates>().HasData(
-                new ResourceStates("Solicitado") { Id = 1 },
-                new ResourceStates("Descartado") { Id = 2 },
-                new ResourceStates("Aprobado") { Id = 3 }
+                new ResourceStates("Solicitado") { Id =  (int)ResourceStatesEnum.Solicitado },
+                new ResourceStates("Descartado") { Id = (int)ResourceStatesEnum.Descartado },
+                new ResourceStates("Aprobado") { Id = (int)ResourceStatesEnum.Aprobado }
             );
         }
     }
