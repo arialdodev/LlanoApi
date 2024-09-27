@@ -1,5 +1,4 @@
-﻿
-using LlanoApp.Domain.AggregateModel.ResourceAggregate;
+﻿using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using LlanoApp.Domain.Common;
 
 namespace LlanoApp.Domain.SeedWork
@@ -10,7 +9,7 @@ namespace LlanoApp.Domain.SeedWork
         Task<Result<List<Resource>>> GetAllByResourceTypeId(int? resourceTypeId);
 
         // Actualizar
-        Task<T?> GetById(int id);
-        void Update(T entity);
+        Task<Result<T>> GetById(int id);
+        Task<Result<T>> Update(T entity);
     }
 }

@@ -42,20 +42,43 @@ namespace LlanoApp.Infrastructure.Repositories
 
                 return Result<List<Resource>>.Success(resourcesList);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return Result<List<Resource>>.Failure($"Error al obtener los recursos: {ex.Message}", ErrorType.Unknown);
+                return Result<List<Resource>>.Failure("Error al obtener los recursos", ErrorType.NotFound);
             }
         }
-        public Task<Resource?> GetById(int id)
+        public async Task<Result<Resource>> GetById(int id)
         {
-            return _llanoAppDbContext.Set<Resource>().FirstOrDefaultAsync(r => r.Id == id);
+            try
+            {
+                var entity = await _llanoAppDbContext.Set<Resource>().FirstOrDefaultAsync(r => r.Id == id);
+
+                if (entity is null)
+                {
+                    return Result<Resource>.Failure("Entidad no encontrada.", ErrorType.NotFound);
+                }
+                return Result<Resource>.Success(entity);
+
+            }
+            catch (Exception)
+            {
+                return Result<Resource>.Failure("error al recuperar la entidad", ErrorType.NotFound);
+            }
         }
 
-        public void Update(Resource resource)
+        public async Task<Result<Resource>> Update(Resource resource)
         {
-            _llanoAppDbContext.Resource.Update(resource);
-            _llanoAppDbContext.SaveChanges();
+            try 
+            {
+                _llanoAppDbContext.Resource.Update(resource);
+                await _llanoAppDbContext.SaveChangesAsync();
+
+                return Result<Resource>.Success(resource);
+            }
+            catch (Exception) 
+            {
+                return Result<Resource>.Failure("Error updating resource", ErrorType.NotFound);
+            }
         }
     }
 }

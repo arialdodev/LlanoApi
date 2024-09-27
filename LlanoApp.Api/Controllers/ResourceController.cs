@@ -42,6 +42,18 @@ namespace LlanoApp.Api.Controllers
         {
             var entity = new ResourceUpdateCommand(resourceUpdateDto);
             var result = await _mediator.Send(entity);
+
+            if (!result.IsSuccess)
+            {
+                switch (result.ErrorType)
+                {
+                    case ErrorType.NotFound:
+                        return StatusCode(400, result);
+
+                    default:
+                        return StatusCode(500, result);
+                }
+            }
             return StatusCode(200, result);
         }
 
@@ -50,11 +62,18 @@ namespace LlanoApp.Api.Controllers
         {
             var query = new ResourcesGetAllListQuery(resourceTypeId);
             var listResources = await _mediator.Send(query);
-            if (listResources.IsSuccess)
+            if (!listResources.IsSuccess)
             {
-                return Ok(listResources.Value);
+                switch (listResources.ErrorType)
+                {   
+                    case ErrorType.NotFound:
+                        return StatusCode(400, listResources);
+
+                    default:
+                        return StatusCode(500, listResources);
+                }
             }
-            return BadRequest(listResources.Error);
+            return StatusCode(200, listResources);
         }
     }
 }
