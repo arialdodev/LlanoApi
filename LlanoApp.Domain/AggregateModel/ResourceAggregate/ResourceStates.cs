@@ -1,17 +1,16 @@
-﻿
-using LlanoApp.Domain.SeedWork;
+﻿using LlanoApp.Domain.SeedWork;
 
 namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
 {
     public class ResourceStates : Entity
     {
-        public string State { get; private set; }
+        public string NameState { get; private set; }
 
-        public ResourceStates(string state)
+        public ResourceStates(string nameState)
         {
-            State = state;
+            NameState = nameState;
         }
 
-        public ICollection<Resources> Resources { get; private set; } = [];
+        public ICollection<Resource> Resources { get; private set; } = [];
     }
 }

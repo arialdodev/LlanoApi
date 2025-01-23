@@ -141,3 +141,11 @@ Desktop.ini
 *.sap
 
 # End of https://www.toptal.com/developers/gitignore/api/openframeworks+visualstudio
+/LlanoApp.Api/LlanoApp.Api.csproj
+/LlanoApp.Infrastructure/Migrations/20240731204750_AddResourceState.cs
+/LlanoApp.Infrastructure/Migrations/20240731204750_AddResourceState.Designer.cs
+/LlanoApp.Infrastructure/Migrations/20240814134723_InitialCreate.Designer.cs
+/LlanoApp.Infrastructure/Migrations/20240814134723_InitialCreate.cs
+/LlanoApp.Infrastructure/Migrations/20240902195248_InitialCreate.cs
+/LlanoApp.Infrastructure/Migrations/20240902195248_InitialCreate.Designer.cs
+/LlanoApp.Infrastructure/Migrations/LlanoAppDbContextModelSnapshot.cs

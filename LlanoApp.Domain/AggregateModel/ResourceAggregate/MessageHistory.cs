@@ -13,6 +13,6 @@ namespace LlanoApp.Domain.AggregateModel.ResourceAggregate
         }
 
         public int ResourcesId { get; private set; }
-        public Resources Resources { get; private set; } = null!;
+        public Resource Resources { get; private set; } = null!;
     }
 }

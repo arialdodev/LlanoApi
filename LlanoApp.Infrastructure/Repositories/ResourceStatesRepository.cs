@@ -5,27 +5,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LlanoApp.Infrastructure.Repositories
 {
-    public class ResourceTypesRepository(LlanoAppDbContext llanoAppDbContext) : IRepository<ResourceTypes>
+    public class ResourceStatesRepository(LlanoAppDbContext llanoAppDbContext) : IRepository<ResourceStates>
     {
         private readonly LlanoAppDbContext _llanoAppDbContext = llanoAppDbContext;
+        public Task<bool> Create(ResourceStates entity)
+        {
+            throw new NotImplementedException();
+        }
+        public Task<List<ResourceStates>> GetAll()
+        {
+            var resourceStatesList = _llanoAppDbContext.ResourceStates.ToListAsync();
+            return resourceStatesList;
+        }
 
-        public Task<bool> Create(ResourceTypes resourceTypes)
+        public Task<ResourceStates?> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ResourceTypes>> GetAll()
-        {
-            var resourceTypesList = _llanoAppDbContext.ResourceTypes.ToListAsync();
-            return resourceTypesList;
-        }
-
-        public Task<ResourceTypes?> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(ResourceTypes entity)
+        public void Update(ResourceStates entity)
         {
             throw new NotImplementedException();
         }

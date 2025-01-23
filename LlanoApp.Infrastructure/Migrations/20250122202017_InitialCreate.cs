@@ -19,7 +19,7 @@ namespace LlanoApp.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameState = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -44,14 +44,14 @@ namespace LlanoApp.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Resources",
+                name: "Resource",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ResourceTypesId = table.Column<int>(type: "int", nullable: false),
                     ResourceStatesId = table.Column<int>(type: "int", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -59,15 +59,15 @@ namespace LlanoApp.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resources", x => x.Id);
+                    table.PrimaryKey("PK_Resource", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Resources_ResourceStates_ResourceStatesId",
+                        name: "FK_Resource_ResourceStates_ResourceStatesId",
                         column: x => x.ResourceStatesId,
                         principalTable: "ResourceStates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Resources_ResourceTypes_ResourceTypesId",
+                        name: "FK_Resource_ResourceTypes_ResourceTypesId",
                         column: x => x.ResourceTypesId,
                         principalTable: "ResourceTypes",
                         principalColumn: "Id",
@@ -89,11 +89,21 @@ namespace LlanoApp.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_MessageHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MessageHistories_Resources_ResourcesId",
+                        name: "FK_MessageHistories_Resource_ResourcesId",
                         column: x => x.ResourcesId,
-                        principalTable: "Resources",
+                        principalTable: "Resource",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ResourceStates",
+                columns: new[] { "Id", "CreateDate", "NameState", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6844), "Solicitado", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6843) },
+                    { 2, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6850), "Descartado", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6850) },
+                    { 3, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6854), "Aprobado", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6853) }
                 });
 
             migrationBuilder.InsertData(
@@ -101,10 +111,10 @@ namespace LlanoApp.Infrastructure.Migrations
                 columns: new[] { "Id", "CreateDate", "TypeName", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4124), "Leyenda", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4035) },
-                    { 2, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129), "Palabras", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4129) },
-                    { 3, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4133), "Coplas", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4132) },
-                    { 4, new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4135), "Refranes", new DateTime(2024, 7, 24, 15, 7, 45, 945, DateTimeKind.Local).AddTicks(4134) }
+                    { 1, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6490), "Leyenda", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6471) },
+                    { 2, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6494), "Palabra", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6493) },
+                    { 3, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6497), "Copla", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6496) },
+                    { 4, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6501), "Refran", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6500) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -113,13 +123,13 @@ namespace LlanoApp.Infrastructure.Migrations
                 column: "ResourcesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Resources_ResourceStatesId",
-                table: "Resources",
+                name: "IX_Resource_ResourceStatesId",
+                table: "Resource",
                 column: "ResourceStatesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Resources_ResourceTypesId",
-                table: "Resources",
+                name: "IX_Resource_ResourceTypesId",
+                table: "Resource",
                 column: "ResourceTypesId");
         }
 
@@ -130,7 +140,7 @@ namespace LlanoApp.Infrastructure.Migrations
                 name: "MessageHistories");
 
             migrationBuilder.DropTable(
-                name: "Resources");
+                name: "Resource");
 
             migrationBuilder.DropTable(
                 name: "ResourceStates");

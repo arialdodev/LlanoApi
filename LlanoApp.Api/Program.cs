@@ -1,30 +1,46 @@
+using FluentValidation;
+using LlanoApp.Api.Validations.Resource;
 using LlanoApp.Domain.AggregateModel.ResourceAggregate;
 using LlanoApp.Domain.SeedWork;
 using LlanoApp.Infrastructure;
 using LlanoApp.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
+
+# region registro mediator
+
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+#endregion
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("*")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
 
+# region inyeccion de dependencia
 builder.Services.AddScoped<IRepository<ResourceTypes>, ResourceTypesRepository>();
+builder.Services.AddScoped<IRepository<ResourceStates>, ResourceStatesRepository>();
+builder.Services.AddScoped<IRepositoryResource<Resource>, ResourceRepository>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<ResourceCreateDtoValidator>();
+# endregion
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -34,6 +50,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 
