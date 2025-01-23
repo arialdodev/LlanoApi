@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using LlanoApp.Api.Dto;
+using LlanoApp.Domain.Enums;
 
 namespace LlanoApp.Api.Validations.Resource
 {
@@ -20,16 +21,16 @@ namespace LlanoApp.Api.Validations.Resource
 
             RuleFor(ResourceCreateDto => ResourceCreateDto.Image)
                 .NotEmpty()
-                .When(ResourceCreateDto => ResourceCreateDto.ResourceTypesId == 1)
+                .When(ResourceCreateDto => ResourceCreateDto.ResourceTypesId == (int)ResourceTypesEnum.Leyenda)
                 .WithMessage("la imagen es requerida cuando el recurso es una leyenda");
 
-            #region
+            #region validaciones de description
             RuleFor(ResourceCreateDto => ResourceCreateDto.Description)
                 .NotEmpty().WithMessage("La Descripcion es requerida");
 
             RuleFor(resource => resource.Description)
             .MinimumLength(601)
-            .When(resource => resource.ResourceTypesId == 1)
+            .When(resource => resource.ResourceTypesId == (int)ResourceTypesEnum.Leyenda)
             .WithMessage("La descripción debe tener más de 600 caracteres cuando el recurso es una leyenda.");
 
             RuleFor(ResourceCreateDto => ResourceCreateDto.Description)

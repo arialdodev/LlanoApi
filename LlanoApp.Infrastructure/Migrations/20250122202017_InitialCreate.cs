@@ -101,9 +101,9 @@ namespace LlanoApp.Infrastructure.Migrations
                 columns: new[] { "Id", "CreateDate", "NameState", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5384), "Solicitado", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5384) },
-                    { 2, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5386), "Descartado", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5386) },
-                    { 3, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5387), "Aprobado", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5387) }
+                    { 1, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6844), "Solicitado", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6843) },
+                    { 2, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6850), "Descartado", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6850) },
+                    { 3, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6854), "Aprobado", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6853) }
                 });
 
             migrationBuilder.InsertData(
@@ -111,10 +111,10 @@ namespace LlanoApp.Infrastructure.Migrations
                 columns: new[] { "Id", "CreateDate", "TypeName", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5277), "Leyenda", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5263) },
-                    { 2, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5280), "Palabra", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5279) },
-                    { 3, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5281), "Copla", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5281) },
-                    { 4, new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5282), "Refran", new DateTime(2024, 8, 14, 8, 47, 23, 270, DateTimeKind.Local).AddTicks(5282) }
+                    { 1, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6490), "Leyenda", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6471) },
+                    { 2, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6494), "Palabra", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6493) },
+                    { 3, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6497), "Copla", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6496) },
+                    { 4, new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6501), "Refran", new DateTime(2025, 1, 22, 15, 20, 15, 645, DateTimeKind.Local).AddTicks(6500) }
                 });
 
             migrationBuilder.CreateIndex(

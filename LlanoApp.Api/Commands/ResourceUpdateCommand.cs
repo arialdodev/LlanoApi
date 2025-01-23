@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using LlanoApp.Api.Dto;
+using LlanoApp.Domain.Common;
 
 namespace LlanoApp.Api.Commands
 {
-    public class ResourceUpdateCommand : IRequest<bool>
+    public class ResourceUpdateCommand : IRequest<Result<bool>>
     {
         public ResourceUpdateDto ResourceUpdateDto { get; set; }
 
